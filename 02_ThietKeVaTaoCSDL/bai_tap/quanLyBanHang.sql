@@ -1,27 +1,27 @@
 create database bai2_bt_quanlybanhang;
 use bai2_bt_quanlybanhang;
 create table Customer(
-cID int primary key,
-cName varchar(50),
-cAge int
+customer_ID int primary key,
+customer_Name varchar(50),
+customer_Age int
 );
 create table Orderr(
-oID int not null auto_increment primary key,
-cID int not null,
-oDate date,
-oTotalPrice double,
-foreign key (cID) references Customer(cID) 
+order_ID int not null auto_increment primary key,
+customer_ID int not null,
+order_Date date,
+order_TotalPrice double,
+foreign key (customer_ID) references Customer(customer_ID) 
 );
 create table Product(
-pID int not null auto_increment primary key,
-pName varchar(50),
-pPrice int not null
+product_ID int not null auto_increment primary key,
+product_Name varchar(50),
+product_Price int not null
 );
 create table OrderDetail(
-oID int not null,
-pID int not null,
-odQTY varchar(50),
-primary key (oID,pID),
-foreign key (oID) references Orderr(oID),
-foreign key (pID) references Product(pID)
+order_ID int not null,
+product_ID int not null,
+order_dQTY varchar(50),
+primary key (order_ID,product_ID),
+foreign key (order_ID) references Orderr(order_ID),
+foreign key (product_ID) references Product(product_ID)
 );
