@@ -8,8 +8,8 @@ cAge int
 create table Orderr(
 oID int not null auto_increment primary key,
 cID int not null,
-oDate datetime,
-oTotalPrice double not null,
+oDate date,
+oTotalPrice double,
 foreign key (cID) references Customer(cID) 
 );
 create table Product(

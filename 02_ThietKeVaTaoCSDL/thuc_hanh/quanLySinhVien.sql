@@ -15,7 +15,7 @@ Status bit,
 ClassID int not null,
 foreign key (ClassID) references Class(ClassID)
 );
-create table Suject(
+create table Subject(
 SubID int not null auto_increment primary key,
 SubName varchar(30) not null,
 Credit tinyint not null default 1 check (Credit >=1),
@@ -28,7 +28,7 @@ StudentID int not null,
 Mark float default 0 check (Mark between 0 and 100),
 ExamTimes tinyint default 1,
 unique (SubID,StudentID),
-foreign key (SubID) references suject (SubID),
+foreign key (SubID) references subject (SubID),
 foreign key (StudentID) references Student (StudentID)
 );
 
