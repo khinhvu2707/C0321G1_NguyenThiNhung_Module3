@@ -21,11 +21,11 @@ values ("Sale – Marketing"),
  ("Gold"), 
  ("Silver"),
  ("Member");
- insert into kieu_thue(ten_kieu_thue,gia)
- value("năm",60000000),
- ("tháng",5100000),
- ("ngày",200000),
- ("giờ",50000);
+ insert into kieu_thue(ten_kieu_thue)
+ value("năm"),
+ ("tháng"),
+ ("ngày"),
+ ("giờ");
  insert into loai_dich_vu(ten_loai_dich_vu)
  values("villa"),
  ("house"),

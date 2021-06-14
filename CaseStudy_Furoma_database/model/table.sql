@@ -46,7 +46,7 @@ foreign key (id_loai_khach) references loai_khach(id_loai_khach)
 create table kieu_thue(
 id_kieu_thue int auto_increment primary key,
 ten_kieu_thue varchar(45),
-gia int not null
+gia int
 );
 create table loai_dich_vu(
 id_loai_dich_vu int auto_increment primary key,
@@ -58,7 +58,7 @@ ten_dich_vu varchar(45),
 dien_tich int,
 so_tang int,
 so_nguoi_toi_da varchar(45),
-chi_phi_thue int,
+chi_phi_thue double,
 id_kieu_thue int,
 id_loai_dich_vu int,
 trang_thai varchar(45),
@@ -81,16 +81,15 @@ foreign key (id_dich_vu) references dich_vu(id_dich_vu)
 create table dich_vu_di_kem(
 id_dich_vu_di_kem int auto_increment primary key,
 ten_dich_vu_di_kem varchar(45) not null,
-gia int,
-don_vi int,
+gia int default 0,
+don_vi int default 0,
 trang_thai_kha_dung varchar(45)
 );
 create table hop_dong_chi_tiet(
 id_hop_dong_chi_tiet int  auto_increment primary key,
 id_hop_dong int not null,
 id_dich_vu_di_kem int not null,
-so_luong int not null,
+so_luong int default 0,
 foreign key (id_hop_dong) references hop_dong(id_hop_dong),
 foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem)
 );
-
