@@ -1,5 +1,5 @@
 -- TASK 2 :Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 ký tự --
-select ho_ten_nhan_vien
+select *
 from nhan_vien
 where (substring(ho_ten_nhan_vien, character_length(ho_ten_nhan_vien)-instr(reverse(ho_ten_nhan_vien)," ") + 2,instr(reverse(ho_ten_nhan_vien)," ")-1)  like "T%" or  "H%" or  "K%") and length(ho_ten_nhan_vien)<=15;
 
