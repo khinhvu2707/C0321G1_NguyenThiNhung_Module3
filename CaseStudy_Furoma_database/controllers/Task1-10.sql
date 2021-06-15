@@ -2,6 +2,10 @@
 select *
 from nhan_vien
 where (substring(ho_ten_nhan_vien, character_length(ho_ten_nhan_vien)-instr(reverse(ho_ten_nhan_vien)," ") + 2,instr(reverse(ho_ten_nhan_vien)," ")-1)  like "T%" or  "H%" or  "K%") and length(ho_ten_nhan_vien)<=15;
+ -- Cách 2 --
+ select *
+from nhan_vien
+where (substring_index(ho_ten_nhan_vien," ", -1) like "T%" or  "H%" or  "K%" ) and (length(ho_ten_nhan_vien) <=15);
 
 
 -- TASK 3 :Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị” --
@@ -69,7 +73,26 @@ union
 select ho_ten_khach_hang
 from khach_hang;
 -- * Cách 2 * --
+use furoma;
+select ho_ten_khach_hang
+from khach_hang
+group by ho_ten_khach_hang;
+-- * Cách 3 * --
+use furoma;
+select distinct ho_ten_khach_hang
+from khach_hang;
 
 -- TASK 9:	Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2019 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng. -- 
+use furoma;
+select month(h.ngay_lam_hop_dong) as thang , count(h.id_hop_dong) as soHopDong
+from hop_dong h
+where year(h.ngay_lam_hop_dong) = "2019"
+group by month(h.ngay_lam_hop_dong);
 
 -- TASK 10:	Hiển thị thông tin tương ứng với từng Hợp đồng thì đã sử dụng bao nhiêu Dịch vụ đi kèm. Kết quả hiển thị bao gồm IDHopDong, NgayLamHopDong, NgayKetthuc,TienDatCoc, SoLuongDichVuDiKem (được tính dựa trên việc count các IDHopDongChiTiet). --
+use furoma;
+select h.id_hop_dong,h.ngay_lam_hop_dong,h.ngay_ket_thuc,h.tien_dat_coc,count(c.id_hop_dong_chi_tiet) as soLuongDichVuDiKem
+from hop_dong h
+inner join hop_dong_chi_tiet c on h.id_hop_dong = c.id_hop_dong
+inner join dich_vu_di_kem dk on c.id_dich_vu_di_kem = dk.id_dich_vu_di_kem
+group by (h.id_hop_dong);
