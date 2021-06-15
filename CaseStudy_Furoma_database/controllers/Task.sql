@@ -1,8 +1,8 @@
 -- TASK 2 :Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 ký tự --
-use furoma;
-select *
+select ho_ten_nhan_vien
 from nhan_vien
-where (ho_ten_nhan_vien like "T%" or ho_ten_nhan_vien like "H%" or ho_ten_nhan_vien like "K%") and length(ho_ten_nhan_vien)<=15;
+where (substring(ho_ten_nhan_vien, character_length(ho_ten_nhan_vien)-instr(reverse(ho_ten_nhan_vien)," ") + 2,instr(reverse(ho_ten_nhan_vien)," ")-1)  like "T%" or  "H%" or  "K%") and length(ho_ten_nhan_vien)<=15;
+
 
 -- TASK 3 :Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị” --
 use furoma;
