@@ -1,15 +1,15 @@
 create database bai5_bt_demo;
 use bai5_bt_demo;
 create table Product(
-Id int auto_increment primary key,
-product_Code varchar(50) unique,
-product_Name varchar(50),
-product_Price int,
-product_Amount int,
-product_Description varchar(50),
-product_Status varchar(50)
+id int auto_increment primary key,
+product_code varchar(50) unique,
+product_name varchar(50),
+product_price int,
+product_amount int,
+product_description varchar(50),
+product_status varchar(50)
 );
-insert into Product(product_Code,product_Name,product_Price,product_Amount,product_Description,product_Status)
+insert into Product(product_code,product_name,product_price,product_amount,product_description,product_status)
 values ("SP1","Hoa Sen",10,5,"Hoa Sen Huế","đang bán"),
 ("SP2","Hoa Ly",10,7,"Hoa Ly Huế","đang bán"),
 ("SP3","Hoa Hồng",13,0,"Hoa Hồng Đà Lạt","hết hàng"),
@@ -17,26 +17,30 @@ values ("SP1","Hoa Sen",10,5,"Hoa Sen Huế","đang bán"),
 -- index --
 create unique index product_index on product(product_code);
 
-alter table product add index product_index2 (product_Name,product_Price);
+alter table product add index product_index2 (product_name,product_price);
 
 explain select *
 from product
-where product_Name = "Hoa Tu Lip";
+where product_name = "Hoa Tu Lip";
 
  -- 2. View -- 
      -- tạo view --
  create view product_view as
- select product_Code, product_Name, product_Price, product_Status
+ select *
  from product;
  
  select * from product_view;
      -- sửa view -- 
 CREATE OR REPLACE VIEW product_view  AS
-select product_Code, product_Name, product_Price, product_Status
+select id,product_code, product_name, product_price, product_status
 from product
 where product_name = "Hoa Hồng";
  
  select * from product_view;
+    -- sửa view 2 -- 
+    update product_view
+    set product_name = "Hoa Lan"
+    where product_name = "Hoa hồng";
    -- xóa view --
 drop view product_view;
 
@@ -56,7 +60,7 @@ drop view product_view;
   drop procedure if exists `test_procedure` //
   create procedure test_procedure()
   begin
-  insert into Product(product_Code,product_Name,product_Price,product_Amount,product_Description,product_Status)
+  insert into Product(product_code,product_name,product_price,product_amount,product_description,product_status)
   values ("SP5","Hoa Hướng Dương",12,9,"Hoa Hướng Dương Đà Lạt ","đang bán");
   end //
   delimiter ;

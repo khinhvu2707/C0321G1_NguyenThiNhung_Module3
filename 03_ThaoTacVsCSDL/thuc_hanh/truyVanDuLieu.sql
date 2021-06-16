@@ -8,13 +8,13 @@ WHERE Status = true;
 
 SELECT *
 FROM Subject
-WHERE Credit < 10;
+WHERE credit < 10;
 
-SELECT S.StudentId, S.StudentName, C.ClassName
-FROM Student S join Class C on S.ClassId = C.ClassID
-WHERE C.ClassName = 'A1';
+SELECT S.student_id, S.student_name, C.class_name
+FROM Student S join Class C on S.class_id = C.class_id
+WHERE C.class_name = 'A1';
 
 
-SELECT S.StudentId, S.StudentName, Sub.SubName, M.Mark
-FROM Student S join Mark M on S.StudentId = M.StudentId join subject Sub on M.SubId = Sub.SubId
-WHERE Sub.SubName = 'CF';
+SELECT S.student_id, S.student_name, Sub.sub_name, M.mark
+FROM Student S join Mark M on S.student_id = M.student_id join subject Sub on M.sub_id = Sub.sub_id
+WHERE Sub.sub_name = 'CF';

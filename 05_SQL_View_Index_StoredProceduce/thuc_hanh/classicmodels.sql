@@ -32,27 +32,27 @@ USE `classicmodels`;
 DROP TABLE IF EXISTS `customers`;
 
 CREATE TABLE `customers` (
-  `customerNumber` int(11) NOT NULL,
-  `customerName` varchar(50) NOT NULL,
-  `contactLastName` varchar(50) NOT NULL,
-  `contactFirstName` varchar(50) NOT NULL,
+  `customer_number` int(11) NOT NULL,
+  `customer_name` varchar(50) NOT NULL,
+  `contact_last_name` varchar(50) NOT NULL,
+  `contact_first_name` varchar(50) NOT NULL,
   `phone` varchar(50) NOT NULL,
-  `addressLine1` varchar(50) NOT NULL,
-  `addressLine2` varchar(50) DEFAULT NULL,
+  `address_line1` varchar(50) NOT NULL,
+  `address_line2` varchar(50) DEFAULT NULL,
   `city` varchar(50) NOT NULL,
   `state` varchar(50) DEFAULT NULL,
-  `postalCode` varchar(15) DEFAULT NULL,
+  `postal_code` varchar(15) DEFAULT NULL,
   `country` varchar(50) NOT NULL,
-  `salesRepEmployeeNumber` int(11) DEFAULT NULL,
-  `creditLimit` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`customerNumber`),
-  KEY `salesRepEmployeeNumber` (`salesRepEmployeeNumber`),
-  CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`salesRepEmployeeNumber`) REFERENCES `employees` (`employeeNumber`)
+  `sales_rep_employee_number` int(11) DEFAULT NULL,
+  `credit_limit` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`customer_number`),
+  KEY `sales_rep_employee_number` (`sales_rep_employee_number`),
+  CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`sales_rep_employee_number`) REFERENCES `employees` (`employee_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `customers` */
 
-insert  into `customers`(`customerNumber`,`customerName`,`contactLastName`,`contactFirstName`,`phone`,`addressLine1`,`addressLine2`,`city`,`state`,`postalCode`,`country`,`salesRepEmployeeNumber`,`creditLimit`) values 
+insert  into `customers`(`customer_number`,`customer_name`,`contact_last_name`,`contact_first_name`,`phone`,`address_line1`,`address_line2`,`city`,`state`,`postal_code`,`country`,`sales_rep_employee_number`,`credit_limit`) values 
 
 (103,'Atelier graphique','Schmitt','Carine ','40.32.2555','54, rue Royale',NULL,'Nantes',NULL,'44000','France',1370,'21000.00'),
 

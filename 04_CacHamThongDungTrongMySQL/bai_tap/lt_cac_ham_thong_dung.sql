@@ -1,17 +1,17 @@
-USE bai2_th_QuanLySinhVien;
+USE bai2_th_quanlysinhvien;
 -- Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất --
 select *
 from subject
-where Credit = (select max(Credit) from subject);
+where credit = (select max(credit) from subject);
 
 -- Hiển thị các thông tin môn học có điểm thi lớn nhất --
-select subject.SubID,subject.SubName,subject.Credit,subject.Status,Mark.Mark,Mark.StudentID
+select subject.sub_id ,subject.sub_name,subject.credit,subject.Status,Mark.mark,Mark.student_id
 from subject
-inner join mark on subject.SubID = Mark.SubID
-where Mark = (select max(mark) from mark);
+inner join mark on subject.sub_id = Mark.sub_id 
+where mark = (select max(mark) from mark);
 
 -- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, xếp hạng theo thứ tự điểm giảm dần --
-SELECT S.StudentId,S.StudentName, AVG(Mark) as "diemTrungBinh"
-FROM Student S join Mark M on S.StudentId = M.StudentId
-GROUP BY S.StudentId, S.StudentName
+SELECT S.student_id,S.student_name, AVG(mark) as "avg"
+FROM Student S join Mark M on S.student_id = M.student_id
+GROUP BY S.student_id, S.student_name
 order by avg(mark) desc;

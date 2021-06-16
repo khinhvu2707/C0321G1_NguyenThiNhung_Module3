@@ -1,21 +1,21 @@
 DELIMITER //
 
-CREATE PROCEDURE getCusById
+CREATE PROCEDURE get_cus_by_id
 
-(IN cusNum INT(11))
+(IN cus_num INT(11))
 
 BEGIN
 
-  SELECT * FROM customers WHERE customerNumber = cusNum;
+  SELECT * FROM customers WHERE customer_number = cus_num;
 
 END //
 
 DELIMITER ;
-call getCusById(175);
+call get_cus_by_id(175);
 
 DELIMITER //
 
-CREATE PROCEDURE GetCustomersCountByCity(
+CREATE PROCEDURE get_customers_count_by_city(
 
     IN  in_city VARCHAR(50),
 
@@ -25,7 +25,7 @@ CREATE PROCEDURE GetCustomersCountByCity(
 
 BEGIN
 
-    SELECT COUNT(customerNumber)
+    SELECT COUNT(customer_number)
 
     INTO total
 
@@ -36,14 +36,14 @@ BEGIN
 END//
 
 DELIMITER ;
-CALL GetCustomersCountByCity('Lyon',@total);
+CALL get_customers_count_by_city('Lyon',@total);
 SELECT @total;
 
 
 
 DELIMITER //
 
-CREATE PROCEDURE SetCounter(
+CREATE PROCEDURE set_counter(
 
     INOUT counter INT,
 
@@ -60,10 +60,10 @@ END//
 DELIMITER ;
 SET @counter = 1;
 
-CALL SetCounter(@counter,1); -- 2
+CALL set_counter(@counter,1); -- 2
 
-CALL SetCounter(@counter,1); -- 3
+CALL set_counter(@counter,1); -- 3
 
-CALL SetCounter(@counter,5); -- 8
+CALL set_counter(@counter,5); -- 8
 
 SELECT @counter; -- 8
