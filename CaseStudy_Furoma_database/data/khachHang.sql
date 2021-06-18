@@ -2,7 +2,7 @@ use furoma;
 insert into khach_hang(id_loai_khach,ho_ten_khach_hang,ngay_sinh,so_cmnd,sdt,email,dia_chi)
 values(1,"Linh Lung","1993-04-04","787656543","0989765555","linhnhi@gmail.com","Đà Nẵng"),
 (2,"Thiên An","1989-04-12","987676766","0989769955","thienan@gmail.com","Đà Nẵng"),
-(1,"Lam Vy Vy","2000-09-14","124543654","0989860789","vy13@gmail.com","Huế"),
+(1,"Lam Vy Vy","2000-09-14","124543654","0989860789","vy13@gmail.com","Quảng Ngãi"),
 (4,"Thiên An","1993-11-23","987879876","09891436785","hoatranh@gmail.com","Quảng Trị"),
 (4,"Trịnh Thiên","1999-12-01","197457864","0989857603","li67nhi@gmail.com","Đà Nẵng"),
 (5,"Tử Anh","1950-05-04","4539846767","0989847508","tuanhanh@gmail.com","Quảng Trị"),
