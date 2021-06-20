@@ -14,13 +14,13 @@ set dia_chi = "Liên Chiểu";
 -- Giải thích lý do và thực hiện kiểm tra tính hiệu quả của việc sử dụng INDEX --
 use furoma;
 create unique index IX_KHACHHANG on khach_hang(id_khach_hang);
-explain select * from khach_hang;
-
+explain select * from khach_hang where id_khach_hang ="4";
+drop index IX_khachhang on khach_hang;
 -- TASK 24.	Tạo Non-Clustered Index có tên là IX_SoDT_DiaChi trên các cột SODIENTHOAI và DIACHI trên bảng KHACH HANG và kiểm tra tính hiệu quả tìm kiếm sau khi tạo Index --
 use furoma;
 alter table khach_hang add index IX_SoDT_DiaChi(sdt,dia_chi);
-explain select * from khach_hang;
-
+explain select * from khach_hang where dia_chi ="Vinh";
+drop index IX_SoDT_DiaChi on khach_hang;
 -- TASK 25.	Tạo Store procedure Sp_1 Dùng để xóa thông tin của một Khách hàng nào đó với Id Khách hàng được truyền vào như là 1 tham số của Sp_1 --
 delimiter //
 create procedure sp_1(in delete_id int)
@@ -137,9 +137,9 @@ create temporary table task301(select dv.id_dich_vu,hd.id_hop_dong,hdct.id_hop_d
 inner join hop_dong hd on dv.id_dich_vu = hd.id_dich_vu
 inner join hop_dong_chi_tiet hdct on hd.id_hop_dong = hdct.id_hop_dong
 where dv.id_loai_dich_vu =3 and year(hd.ngay_lam_hop_dong) between "2015" and "2019");
-delete from dich_vu where id_dich_vu in (select id_dich_vu from task301);
-delete from hop_dong where id_hop_dong in (select id_hop_dong from task301);
 delete from hop_dong_chi_tiet where id_hop_dong_chi_tiet in (select id_hop_dong_chi_tiet from task301);
+delete from hop_dong where id_hop_dong in (select id_hop_dong from task301);
+delete from dich_vu where id_dich_vu in (select id_dich_vu from task301);
 drop table task301;
 end //
 delimiter ;
