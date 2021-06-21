@@ -1,0 +1,36 @@
+header {
+    background-color: red;
+    padding: 10px;
+}
+
+nav {
+    background-color: aqua;
+    padding: 10px;
+}
+
+section {
+    background-color: plum;
+    width: 60%;
+    float: left;
+    display: inline-block;
+    height: 70px;
+}
+
+article {
+    background-color: cadetblue;
+    width: 60%;
+    float: left;
+    height: 70px;
+}
+
+aside {
+    background-color: chartreuse;
+    width: 40%;
+    height: 140px;
+    display: inline-block;
+}
+
+footer {
+    background-color: green;
+    padding: 10px;
+}
