@@ -1,0 +1,82 @@
+#menutren {
+    background-color: dimgray;
+    height: 50px;
+
+}
+
+ ul{
+    margin: 0;
+    padding: 0;
+     width: 80%;
+     float: left;
+}
+ .login {
+     margin-right: 0px;
+
+ }
+li {
+    color: white;
+    float: left;
+    display: block;
+    list-style: none;
+    width: 7%;
+    text-align: center;
+    position: relative;
+    line-height: 50px;
+}
+ul :hover {
+    background-color: black;
+}
+
+#trai {
+    background-color: lightgray;
+    height: 500px;
+    width: 15%;
+    float: left;
+}
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+}
+#giua {
+    height: 500px;
+    width: 70%;
+    background-color: lightcyan;
+    float: left;
+}
+
+#phai {
+    background-color: lightgray;
+    height: 500px;
+    width: 15%;
+    float: left;
+}
+.phai1 {
+    border: 1px solid white;
+    height: 50px;
+    /*padding: 30px;*/
+    /*margin: 20px;*/
+    margin: 10% auto 10% 10%;
+    width: 70%;
+    padding-top: 10%;
+    text-align: center;
+}
+#menuduoi {
+    background-color: gray;
+    height: 50px;
+    clear: both;
+}
+
+.login { width: 15%;
+    float: left;
+    text-align: right;
+    color: white;
+    padding-right: 5px;
+}
+.duoi {
+    text-align: center;
+    color: white;
+    padding-top: 18px;
+}

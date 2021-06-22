@@ -1,0 +1,95 @@
+.leftheader {grid-area: leftH}
+.header {grid-area: header1}
+.rightheader {grid-area: rightH}
+.leftsidebar {grid-area: leftS}
+.content {grid-area: content1}
+.rightsidebar {grid-area: rightS}
+.facebook {
+    display: grid;
+    grid-template-areas:
+'leftH header1 rightH'
+'leftS content1 rightS';
+    grid-template-columns: 25% 50% 25%;
+}
+.facebook > div {
+    border: 1px solid black;
+    padding: 2px;
+    margin: 1px;
+}
+img {
+    height: 30px;
+}
+input {
+    position: relative;
+    bottom: 10px;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: block;
+    width: 90%;
+}
+li {
+    color: white;
+    float: left;
+    display: block;
+    list-style: none;
+    width: 10%;
+    /*text-align: center;*/
+    position: relative;
+    padding-left: 10%;
+    line-height: 10px;
+}
+a { border: 1px solid red;
+}
+ ul ul li a{
+    width: 500px;
+    text-decoration: none;
+    /*text-align: left;*/
+    /*padding-left: 10px;*/
+}
+
+ li a:hover{
+    background-color: red;
+}
+
+ ul ul{
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 100%;
+    visibility: hidden;
+}
+
+ li:hover li{
+    visibility: visible;
+}
+ .leftsidebar img{
+     width: 10%;
+     float: left;
+    margin-left: 7%;
+ }
+.leftsidebar p{
+    width: 50%;
+    margin-left: 20%;
+}
+.content img {
+    margin-top : 30px;
+    width: 19%;
+    height: 200px;
+}
+.rightsidebar img{
+    width: 10%;
+    float: left;
+    margin-left: 7%;
+}
+.rightsidebar p{
+    width: 50%;
+    margin-left: 20%;
+}
+@media only screen and (max-width: 850px) {
+    input {
+        width: 10%;
+    }
+}
