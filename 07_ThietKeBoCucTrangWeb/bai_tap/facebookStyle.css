@@ -41,11 +41,12 @@ li {
     padding-left: 10%;
     line-height: 10px;
 }
-a { border: 1px solid red;
-}
+
  ul ul li a{
-    width: 500px;
+    width: 100px;
     text-decoration: none;
+     display: inline-block;
+
     /*text-align: left;*/
     /*padding-left: 10px;*/
 }
@@ -88,6 +89,15 @@ a { border: 1px solid red;
     width: 50%;
     margin-left: 20%;
 }
+.leftheader , .rightheader , .header {
+    top : 0;
+    position: sticky;
+}
+.leftsidebar , .rightsidebar{
+    top : 0;
+    position: sticky;
+}
+
 @media only screen and (max-width: 850px) {
     input {
         width: 10%;
