@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.css">
+
+    <title>Title</title>
+</head>
+<body>
+<!--    navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img style="height: 70px;margin-right: 10px"
+         src="data:image/png;base64,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">
+    <a class="navbar-brand" href="#">Surface</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Computers
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Computers for Business
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Accessories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Shop now
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li>
+                <a class="nav-link" href="#">Support</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    All Microsoft
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sign In</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <!--carowsel-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Hero_Spring_21_color_V1.jpg?version=672b6412-c20f-66ff-49d7-10347a5ab07e"
+                     class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Pride_5_21_V1.jpg?version=476ede35-ac58-7627-54d1-fac8eecd64a4"
+                     class="d-block w-100" alt="...">
+            </div>
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!--    ghi chú 1-->
+    <div style="margin: 30px">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <div class="card" style="border: none">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Panel02_QuickLinks_Icons_Compare-1.jpg?version=768b9c0e-5210-2413-cafb-f9b5519ca168"
+                         class="card-img-top" alt="..." style="height: 35px;width: 35px;margin: auto">
+                    <div class="card-body" style="margin: auto">
+                        <a href="#">Compare Devices</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" style="border: none">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Panel02_QuickLinks_Icons_HelpMeChoose-1.jpg?version=94568b37-f23e-0e29-311d-9cda87b3f181"
+                         class="card-img-top" alt="..." style="height: 35px;width: 35px;margin: auto">
+                    <div class="card-body" style="margin: auto">
+                        <a href="#">Help me choose</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" style="border: none">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Panel02_QuickLinks_Icons_Deals-1.jpg?version=8d0d733c-3989-4055-23e7-4c32adff8dcb"
+                         class="card-img-top" alt="..." style="height: 35px;width: 35px;margin: auto">
+                    <div class="card-body" style="margin: auto">
+                        <a href="#">Deals</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" style="border: none">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Panel02_QuickLinks_Icons_Home-1.jpg?version=d081b5f0-2d51-cb70-2f05-2ce6a6fb9e14"
+                         class="card-img-top" alt="..." style="height: 35px;width: 35px;margin: auto">
+                    <div class="card-body" style="margin: auto">
+                        <a href="#">Surface at home</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" style="border: none">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Panel02_QuickLinks_Icons_Business-1.jpg?version=b0546dd4-3657-e34e-9329-824f0bd0b31c"
+                         class="card-img-top" alt="..." style="height: 35px;width: 35px;margin: auto">
+                    <div class="card-body" style="margin: auto">
+                        <a href="#">For Business</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+    </div>
+    <!--    hình ảnh -->
+    <div style="margin: 30px 5%">
+        <div class="row">
+            <div class="col-sm-8" style="background-color: lightgrey;text-align: center">
+
+                <h3 style="margin-top: 60px">Join us to see what's next for Windows</h3>
+                <h5>Watch the livestream Thursday, June 24 at 11am Eastern Time | #Microsoftevent
+                </h5>
+                <a href="#">Get a reminder</a>
+
+            </div>
+            <div class="col-sm-4">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Win_Offer_image.jpg?version=c97d08c1-8772-34d1-91ad-50bec0bd05b6"
+                     class="card-img-top" alt="...">
+            </div>
+        </div>
+    </div>
+    <!--    ghi chú 2-->
+    <div class="card-body" style="margin:0 20%;text-align: center">
+        <h4>Original by design</h4>
+        <p>Whether you do your best thinking at home or in nature, alone or with others, every Surface has been
+            designed
+            to fuel your originality. You never know where your next inspiration will come from. Check out these
+            true
+            originals and their stories.</p>
+        <a href="#">Meet our Surface originals ></a>
+    </div>
+    <!--Sản phẩm -->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Mosic_Fall_20_LaptopG_en-us_V1.jpg?version=2d178933-8079-1585-f38e-4215399226b2"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Laptop Go</h3>
+                    <h5>Sleek, light, and a standout value, with 12.4” touchscreen</h5>
+                    <a href="#">Meet Surface Laptop Go ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Mosic_Fall_20_Go_2_en-us_V1.jpg?version=45fd9288-3840-0d86-599c-77989e84ed43"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Go 2</h3>
+                    <h5>Smallest, lightest Surface with 10.5” touchscreen*</h5>
+                    <a href="#">Meet Surface Go 2 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Mosic_Fall_20_Duo_en-us_V1.png?version=affd3171-0839-a6bc-6e2e-5e26d0093b63"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Book 3</h3>
+                    <h5>Our most powerful 13.5” or 15” touchscreen laptop</h5>
+                    <a href="#">Learn about Surface Book 3 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Mosic_Fall_20_Studio_2_en-us_V1.jpg?version=b13db182-9214-d5a4-1a51-2ee8aedb503a"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Pro X</h3>
+                    <h5>Edge to edge 2-in-1 laptop with LTE and 13” touchscreen*</h5>
+                    <a href="#">Discover Surface Pro X ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Mosic_Spring_21_BS_color_V1.jpg?version=bfb57348-242c-e3f0-395f-ed40c3540161"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Duo</h3>
+                    <h5>Mobile productivity powered by two 5.6” screens and a revolutionary 360° hinge</h5>
+                    <a href="#">Meet Surface Duo ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Mosic_Fall_20_Pro_7_en-us_V1.png?version=6316d187-4087-64fa-3387-9a297c177ae6"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Studio 2</h3>
+                    <h5>Brilliant color, blazing graphics, and 28” touchscreen*</h5>
+                    <a href="#">See Surface Studio 2 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Hero_20_mosaic_Book3_SingleTile_V1.jpg?version=f7a8f28a-7d43-8b2a-35e2-b9fca7693a53"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Laptop 4</h3>
+                    <h5>Slim and stylish, 13.5” or 15” touchscreen</h5>
+                    <a href="#">Explore Surface Laptop 4 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Mosic_Fall_20_prox_en-us_V1.jpg?version=ff429f4d-7a62-77bc-52e7-8526e5c4245a"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3>Surface Pro 7</h3>
+                    <h5>12.3” touchscreen with tablet-to-laptop versatility*</h5>
+                    <a href="#">Meet Surface Pro 7 ></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    ghi chú 3 -->
+    <div class="card-body" style="text-align: center">
+        <h4>Original by design, inspired by you</h4>
+        <p>Inspiration can come from anywhere. Originality is where you take it.</p>
+        <a href="#">Meet our Surface originals ></a>
+    </div>
+    <!--    video-->
+
+    <div class="embed-responsive embed-responsive-16by9 mt-5">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Jd2GK0qDtRg"></iframe>
+    </div>
+
+    <!-- Ảnh 1-->
+
+
+    <div>
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_HMC_HighlightFeature_Spring_21_V1.jpg?version=03ed24a9-1ad2-b0e4-effb-c43b598c1d54"
+                     class="card-img-top" alt="...">
+            </div>
+
+        </div>
+    </div>
+    <!-- ảnh 3-->
+    <div style="margin: 30px 10% 0">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/1920_Panel24_3Up_Footer_Surface.jpg?version=7bcc912d-1a61-9307-f613-1997da2a573e"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5>Protect your Surface</h5>
+                        <a href="#">See Microsoft Complete protection plans ></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Lg_Generic_ContentPlacement_3UP_20_Business_V1.jpg?version=89c8b139-8e32-4d1f-6dd9-09b13aeb5afe"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5>Surface for your business</h5>
+                        <a href="#">Shop for Business ></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Lg_Generic_ContentPlacement_3UP_20_Acc_V1.jpg?version=0a81779c-5c7e-a61b-908c-4ce93f2a6950"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5>Accessories</h5>
+                        <a href="#">Shop Surface accessories ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #1b1e21;height: 50px">
+        <p style="color: white;margin-top: 10px">* Some accessories and software sold separately. See individual product pages for details.</p>
+    </div>
+</div>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="jquery/popper.min.js"></script>
+<script src="bootstrap4/js/bootstrap.js"></script>
+</body>
+</html>

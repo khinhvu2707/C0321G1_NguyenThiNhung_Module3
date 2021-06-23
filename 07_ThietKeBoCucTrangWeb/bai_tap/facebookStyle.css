@@ -1,9 +1,9 @@
-.leftheader {grid-area: leftH}
+.left-header {grid-area: leftH}
 .header {grid-area: header1}
-.rightheader {grid-area: rightH}
-.leftsidebar {grid-area: leftS}
+.right-header {grid-area: rightH}
+.left-sidebar {grid-area: leftS}
 .content {grid-area: content1}
-.rightsidebar {grid-area: rightS}
+.right-sidebar {grid-area: rightS}
 .facebook {
     display: grid;
     grid-template-areas:
@@ -66,12 +66,12 @@ li {
  li:hover li{
     visibility: visible;
 }
- .leftsidebar img{
+ .left-sidebar img{
      width: 10%;
      float: left;
     margin-left: 7%;
  }
-.leftsidebar p{
+.left-sidebar p{
     width: 50%;
     margin-left: 20%;
 }
@@ -80,21 +80,21 @@ li {
     width: 19%;
     height: 200px;
 }
-.rightsidebar img{
+.right-sidebar img{
     width: 10%;
     float: left;
     margin-left: 7%;
 }
-.rightsidebar p{
+.right-sidebar p{
     width: 50%;
     margin-left: 20%;
 }
-.leftheader , .rightheader , .header {
+.left-header , .right-header , .header {
     top : 0;
     position: sticky;
 }
-.leftsidebar , .rightsidebar{
-    top : 0;
+.left-sidebar > div, .right-sidebar > div{
+    top : 50px;
     position: sticky;
 }
 

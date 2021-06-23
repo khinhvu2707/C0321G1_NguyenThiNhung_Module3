@@ -1,5 +1,5 @@
 .background {grid-area: back}
-.menu {grid-area: menuchinh}
+.menu {grid-area: menu-chinh}
 .video1 {grid-area: video_1}
 .video2 {grid-area: video_2}
 .video3 {grid-area: video_3}
@@ -10,7 +10,7 @@
     display: grid;
     grid-template-areas:
 'back back back'
-'menuchinh menuchinh menuchinh'
+'menu-chinh menu-chinh menu-chinh'
 'video_1 video_5 video_5'
 'video_2 video_5 video_5'
 'video_3 video_5 video_5'
@@ -27,7 +27,7 @@ a {
     text-decoration: none;
 }
 
-.tieuDe {
+.tieu-de {
     display: inline-block;
     width: 13%;
     float: left;
@@ -39,7 +39,7 @@ iframe {
     width: 550px;
     height: 200px;
 }
-.videoChinh {
+.video-chinh {
     width: 800px;
     height: 500px;
 }
@@ -74,11 +74,11 @@ li {
         width: 150px;
         height: 80px;
     }
-    .videoChinh {
+    .video-chinh {
         width: 250px;
         height: 100px;
     }
-    .tieuDe {
+    .tieu-de {
         display: inline-block;
         width: 50%;
         float: left;
