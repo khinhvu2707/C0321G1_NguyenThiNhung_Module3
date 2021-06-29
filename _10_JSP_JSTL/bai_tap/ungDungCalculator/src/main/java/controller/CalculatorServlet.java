@@ -1,5 +1,6 @@
 package controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,28 +15,29 @@ public class CalculatorServlet extends HttpServlet {
         float first = Integer.parseInt(request.getParameter("first-operand"));
         float second = Integer.parseInt(request.getParameter("second-operand"));
         String operator = request.getParameter("operator");
-        PrintWriter writer = response.getWriter();
-        writer.println("<html>");
-        writer.println("<h1>Result:</h1>");
+
         double result = 0;
-        try {
+        String result2 ="";
+        try { CalculateException.Calculate(second);
             if (operator.equals("+")) {
                 result = first + second;
             } else if (operator.equals("-")) {
                 result = first - second;
+
             } else if (operator.equals("*")) {
                 result = first * second;
+
             } else {
-                if (second != 0)
                     result = first / second;
-                else
-                    throw new RuntimeException("Can't divide by zero");
+
             }
-            writer.println(first + " " + operator + " " + second + " = " + result);
+            result2 = (first + " " + operator + " " + second + " = " + result);
         } catch (Exception ex) {
-            writer.println("Error: " + ex.getMessage());
+            result2 = "Error: " + ex.getMessage();
         }
-        writer.println("</html>");
+        request.setAttribute("result3",result2);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/result.jsp");
+        dispatcher.forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
