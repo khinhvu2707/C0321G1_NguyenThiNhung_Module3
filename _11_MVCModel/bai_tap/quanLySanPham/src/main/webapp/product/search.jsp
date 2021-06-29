@@ -8,9 +8,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>View product</title>
 </head>
 <body>
+<h1>Product details</h1>
+<p>
+    <a href="/products">Back to Product List</a>
+</p>
+<table>
+    <tr>
+        <td> ID : </td>
+        <td>${requestScope["product"].getId()}</td>
+    </tr>
+    <tr>
+        <td> Tên sản phẩm : </td>
+        <td>${requestScope["product"].getTenSanPham()}</td>
+    </tr>
+    <tr>
+        <td> Giá sản phẩm : </td>
+        <td>${requestScope["product"].getGiaSanPham()}</td>
+    </tr>
+    <tr>
+        <td> Mô tả : </td>
+        <td>${requestScope["product"].getMoTaSanPham()}</td>
+    </tr>
+    <tr>
+        <td> Hãng sản xuất : </td>
+        <td>${requestScope["product"].getNhaSanXuat()}</td>
+    </tr>
 
+</table>
 </body>
 </html>
+

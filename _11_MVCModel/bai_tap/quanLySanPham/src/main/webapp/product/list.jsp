@@ -42,17 +42,12 @@
             <td>${products.getGiaSanPham()}</td>
             <td>${products.getMoTaSanPham()}</td>
             <td>${products.getNhaSanXuat()}</td>
-            <td><a class="btn btn-primary" href="/products?action=create" role="button">Edit</a></td>
-            <td><a onclick="ondelete(${products.id})" class="btn btn-primary" href="/products?action=create"
-                   role="button">Delete</a></td>
+            <td><a  class="btn btn-primary" href="/products?action=edit&id=${products.getId()}" role="button">Edit</a></td>
+            <td><a onclick="ondelete('${products.getId()}','${products.getTenSanPham()}')" class="btn btn-primary"
+                   role="button" data-toggle="modal" data-target="#modelId">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
-    Launch
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -66,15 +61,16 @@
             </div>
             <form action="/products">
                 <input type="hidden" name="action" value="delete">
-                <input type="hidden" id="idProductDelete">
+                <input type="hidden" name="id" value="" id="idProductDelete">
                 <div class="modal-body">
                     <div class="container-fluid">
-                        Bạn có chắc chắn muốn xóa sản phẩm hay không?
+                        Bạn có chắc chắn muốn xóa sản phẩm <input style="border: none;outline: none;color: red"
+                                                                  id="nameProductDelete">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                    <button type="submit" class="btn btn-success">Xóa</button>
                 </div>
             </form>
         </div>
@@ -82,8 +78,9 @@
 </div>
 
 <script>
-    function ondelete(id) {
+    function ondelete(id, name) {
         document.getElementById("idProductDelete").value = id;
+        document.getElementById("nameProductDelete").value = name;
     }
 </script>
 <script src="assert/jquery/jquery-3.5.1.min.js"></script>

@@ -26,27 +26,36 @@ public class ProductServlet extends HttpServlet {
                 createProduct(request, response);
                 break;
             case "edit":
-                editProduct(request,response);
-                break;
-            case "delete":
-                deleteProduct(request,response);
+                editProduct(request, response);
                 break;
             case "search":
-                searchProduct(request,response);
+                searchProduct(request, response);
                 break;
-            default:
-                showProduct(request, response);
         }
     }
 
-    private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
+    private void searchProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        request.setAttribute("product", productService.findByName(name));
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/search.jsp");
+        requestDispatcher.forward(request, response);
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-    }
 
-    private void editProduct(HttpServletRequest request, HttpServletResponse response) {
-
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String ten = request.getParameter("ten");
+        int gia = Integer.parseInt(request.getParameter("gia"));
+        String moTa = request.getParameter("moTa");
+        String nhaSX = request.getParameter("nhaSX");
+        Product product = productService.findById(id);
+        product.setId(id);
+        product.setTenSanPham(ten);
+        product.setGiaSanPham(gia);
+        product.setMoTaSanPham(moTa);
+        product.setNhaSanXuat(nhaSX);
+        productService.update(id, product);
+        showList(request, response);
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,10 +69,6 @@ public class ProductServlet extends HttpServlet {
         showList(request, response);
     }
 
-    private void showProduct(HttpServletRequest request, HttpServletResponse response) {
-
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -71,34 +76,36 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
-                showCreate(request,response);
+                showCreate(request, response);
                 break;
             case "edit":
-                showEdit(request,response);
+                showEdit(request, response);
                 break;
             case "delete":
-                showDelete(request,response);
-                break;
-            case "search":
-                showSearch(request,response);
+                showDelete(request, response);
                 break;
             default:
                 showList(request, response);
         }
     }
 
-    private void showSearch(HttpServletRequest request, HttpServletResponse response) {
+
+    private void showDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        productService.remove(id);
+        response.sendRedirect("/products");
     }
 
-    private void showDelete(HttpServletRequest request, HttpServletResponse response) {
-    }
-
-    private void showEdit(HttpServletRequest request, HttpServletResponse response) {
+    private void showEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("product", productService.findById(id));
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/edit.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     private void showCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/create.jsp");
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
