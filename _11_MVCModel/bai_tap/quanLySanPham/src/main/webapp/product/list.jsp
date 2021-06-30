@@ -24,17 +24,19 @@
         <input type="submit" value="Tìm kiếm sản phẩm">
     </form>
 </div>
-
-<table border="1px" style="margin-left: 20px">
+<table class="table">
+    <thead>
     <tr>
-        <th>ID</th>
-        <th>Tên sản phẩm</th>
-        <th>Giá sản phẩm</th>
-        <th>Mô tả sản phẩm</th>
-        <th>Nhà sản xuất</th>
-        <th>Sửa</th>
-        <th>Xóa</th>
+        <th scope="col">ID</th>
+        <th scope="col">Tên sản phẩm</th>
+        <th scope="col">Giá sản phẩm</th>
+        <th scope="col">Mô tả sản phẩm</th>
+        <th scope="col">Nhà sản xuất</th>
+        <th scope="col">Sửa</th>
+        <th scope="col">Xóa</th>
     </tr>
+    </thead>
+    <tbody>
     <c:forEach items="${product}" var="products">
         <tr>
             <td>${products.getId()}</td>
@@ -47,7 +49,9 @@
                    role="button" data-toggle="modal" data-target="#modelId">Delete</a></td>
         </tr>
     </c:forEach>
+    </tbody>
 </table>
+
 
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -86,5 +90,6 @@
 <script src="assert/jquery/jquery-3.5.1.min.js"></script>
 <script src="assert/jquery/popper.min.js"></script>
 <script src="assert/bootstrap4/js/bootstrap.js"></script>
+
 </body>
 </html>

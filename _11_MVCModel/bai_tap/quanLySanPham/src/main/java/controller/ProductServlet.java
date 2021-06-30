@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "ProductServlet", urlPatterns = {"", "/products"})
 public class ProductServlet extends HttpServlet {
@@ -36,7 +38,8 @@ public class ProductServlet extends HttpServlet {
 
     private void searchProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
-        request.setAttribute("product", productService.findByName(name));
+        List<Product> productList = productService.findByName(name);
+        request.setAttribute("product", productList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/search.jsp");
         requestDispatcher.forward(request, response);
     }

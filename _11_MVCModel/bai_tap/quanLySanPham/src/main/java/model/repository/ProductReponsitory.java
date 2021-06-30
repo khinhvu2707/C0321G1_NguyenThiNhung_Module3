@@ -10,5 +10,5 @@ public interface ProductReponsitory {
     Product findById(int id);
     void update(int id, Product product);
     void remove(int id);
-    Product findByName(String name);
+    List<Product> findByName(String name);
 }

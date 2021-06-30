@@ -34,7 +34,7 @@ reponsitory.remove(id);
     }
 
     @Override
-    public Product findByName(String name) {
+    public List<Product> findByName(String name) {
         return reponsitory.findByName(name);
     }
 }

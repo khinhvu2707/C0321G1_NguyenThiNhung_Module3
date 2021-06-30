@@ -45,15 +45,17 @@ public class ProductRepositoryImpl implements ProductReponsitory {
     }
 
     @Override
-    public Product findByName(String name) {
+    public List<Product> findByName(String name) {
+        List<Product> productsList = new ArrayList<>();
         Set<Integer> set = products.keySet();
         Product product = null;
         for (Integer key : set) {
             if (products.get(key).getTenSanPham().equals(name)) {
                 product = products.get(key);
+                productsList.add(product);
             }
         }
-        return product;
+        return productsList;
     }
 
 }
