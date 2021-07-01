@@ -12,7 +12,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="assert/bootstrap4/css/bootstrap.css">
-
+    <link rel="stylesheet" href="assert/datatables/css/dataTables.bootstrap4.min.css" />
 </head>
 <body>
 
@@ -25,7 +25,7 @@
         <input type="submit" value="Tìm kiếm sản phẩm">
     </form>
 </div>
-<table class="table">
+<table class="table" id="tableStudent">
     <thead>
     <tr>
         <th scope="col">ID</th>
@@ -90,7 +90,17 @@
 </script>
 <script src="assert/jquery/jquery-3.5.1.min.js"></script>
 <script src="assert/jquery/popper.min.js"></script>
+<script src="assert/datatables/js/jquery.dataTables.min.js"></script>
+<script src="assert/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="assert/bootstrap4/js/bootstrap.js"></script>
-
+<script>
+    $(document).ready(function() {
+        $('#tableStudent').dataTable( {
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5
+        } );
+    } );
+</script>
 </body>
 </html>

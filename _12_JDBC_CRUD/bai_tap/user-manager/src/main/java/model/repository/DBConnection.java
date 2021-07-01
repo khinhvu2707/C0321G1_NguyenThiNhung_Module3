@@ -7,13 +7,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserConnection  {
+public class DBConnection {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "ginny2707";
     private static final String HOST = "localhost";
     private static final String DATABASE = "demo";
     private static final String PORT = "3306";
-    public UserConnection() {
+    public DBConnection() {
     }
 private static Connection connection;
     public static Connection getConnection() {

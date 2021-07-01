@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements IUserRepository{
 
     public void insertUser(User user) throws SQLException {
         System.out.println(INSERT_USERS_SQL);
-        Connection connection = UserConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
@@ -42,7 +42,7 @@ public class UserRepositoryImpl implements IUserRepository{
     public User selectUser(int id) {
         User user = null;
 
-        try (Connection connection = UserConnection.getConnection();
+        try (Connection connection = DBConnection.getConnection();
 
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
             preparedStatement.setInt(1, id);
@@ -67,7 +67,7 @@ public class UserRepositoryImpl implements IUserRepository{
         // using try-with-resources to avoid closing resources (boiler plate code)
         List<User> users = new ArrayList<>();
         // Step 1: Establishing a Connection
-        try (Connection connection = UserConnection.getConnection();
+        try (Connection connection = DBConnection.getConnection();
 
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
@@ -91,7 +91,7 @@ public class UserRepositoryImpl implements IUserRepository{
 
     public boolean deleteUser(int id) throws SQLException {
         boolean rowDeleted;
-        try (Connection connection = UserConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
             statement.setInt(1, id);
             rowDeleted = statement.executeUpdate() > 0;
         }
@@ -100,7 +100,7 @@ public class UserRepositoryImpl implements IUserRepository{
 
     public boolean updateUser(User user) throws SQLException {
         boolean rowUpdated;
-        try (Connection connection = UserConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());

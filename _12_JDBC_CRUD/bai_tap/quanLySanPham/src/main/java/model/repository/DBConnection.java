@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ProductConnection {
+public class DBConnection {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "ginny2707";
     private static final String HOST = "localhost";

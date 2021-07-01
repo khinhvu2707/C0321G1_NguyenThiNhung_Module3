@@ -14,7 +14,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
     @Override
     public List<Product> findAll(){
         List<Product> products =new ArrayList<>();
-        Connection connection =ProductConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if(connection != null){
@@ -40,7 +40,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                ProductConnection.close();
+                DBConnection.close();
             }
         }
         return products;
@@ -48,7 +48,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
 
     @Override
     public void save(Product product) {
-        Connection connection = ProductConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
             try{ statement = connection.prepareStatement("insert into product(ten_san_pham,gia_san_pham,mo_ta_san_pham,hang_san_xuat) value (?,?,?,?); ");
@@ -65,7 +65,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                ProductConnection.close();
+                DBConnection.close();
             }
         }
     }
@@ -73,7 +73,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
     @Override
     public Product findById(int findId) {
         Product product = null;
-        Connection connection = ProductConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
@@ -97,7 +97,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                ProductConnection.close();
+                DBConnection.close();
             }
         }
         return product;
@@ -105,7 +105,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
 
     @Override
     public void update(int id, Product product) {
-        Connection connection = ProductConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
             try{ statement = connection.prepareStatement("update product set ten_san_pham=?,gia_san_pham=?,mo_ta_san_pham=?,hang_san_xuat=? where id =?; ");
@@ -123,14 +123,14 @@ public class ProductRepositoryImpl implements ProductReponsitory {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                ProductConnection.close();
+                DBConnection.close();
             }
         }
     }
 
     @Override
     public void remove(int id) {
-        Connection connection = ProductConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
             try{ statement = connection.prepareStatement("delete from product where id =?; ");
@@ -144,7 +144,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                ProductConnection.close();
+                DBConnection.close();
             }
         }
     }
@@ -153,7 +153,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
     public List<Product> findByName(String name) {
 
         List<Product> productsList = new ArrayList<>();
-        Connection connection = ProductConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
@@ -177,7 +177,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                ProductConnection.close();
+                DBConnection.close();
             }
         }
         return productsList;

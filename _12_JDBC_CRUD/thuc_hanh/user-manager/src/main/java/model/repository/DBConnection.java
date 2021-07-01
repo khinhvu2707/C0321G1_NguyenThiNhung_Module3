@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class UserConnection {
+public class DBConnection {
     private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "ginny2707";
@@ -13,7 +13,7 @@ public class UserConnection {
     private static final String HOST = "localhost";
     private static final String DATABASE = "demo";
     private static final String PORT = "3306";
-    public UserConnection() {
+    public DBConnection() {
     }
 private static Connection connection;
     public static Connection getConnection() {
