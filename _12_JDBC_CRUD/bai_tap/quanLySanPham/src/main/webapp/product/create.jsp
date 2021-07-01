@@ -31,6 +31,14 @@
             <td><input type="text" name="hsx"></td>
         </tr>
         <tr>
+            <td>Ngày sản xuất : </td>
+            <td><input type="text" name="nsx"></td>
+        </tr>
+        <tr>
+            <td>Hạn sử dụng : </td>
+            <td><input type="text" name="hsd"></td>
+        </tr>
+        <tr>
             <td><input type="submit" name="Submit"></td>
         </tr>
     </table>

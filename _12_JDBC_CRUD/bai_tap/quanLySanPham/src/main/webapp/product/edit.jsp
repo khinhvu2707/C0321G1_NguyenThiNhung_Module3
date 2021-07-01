@@ -37,6 +37,14 @@
                 <td><input type="text" name="nhaSX" id="nhaSX" value="${product.getNhaSanXuat()}"></td>
             </tr>
             <tr>
+                <td> Ngày sản xuất : </td>
+                <td><input type="text" name="nsx" id="nsx" value="${product.getNgaySanXuat()}"></td>
+            </tr>
+            <tr>
+                <td> Hạn sử dụng : </td>
+                <td><input type="text" name="hsd" id="hsd" value="${product.getHanSuDung()}"></td>
+            </tr>
+            <tr>
                 <td></td>
                 <td><input type="submit" value="Edit product"></td>
             </tr>

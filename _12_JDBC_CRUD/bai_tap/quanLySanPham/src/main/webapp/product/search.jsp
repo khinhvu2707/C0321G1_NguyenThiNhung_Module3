@@ -25,6 +25,8 @@
         <th scope="col">Giá sản phẩm</th>
         <th scope="col">Mô tả sản phẩm</th>
         <th scope="col">Nhà sản xuất</th>
+        <th scope="col">Ngày sản xuất</th>
+        <th scope="col">Hạn Sử dụng</th>
     </tr>
     </thead>
     <tbody>
@@ -35,6 +37,8 @@
             <td>${products.getGiaSanPham()}</td>
             <td>${products.getMoTaSanPham()}</td>
             <td>${products.getNhaSanXuat()}</td>
+            <td>${products.getNgaySanXuat()}</td>
+            <td>${products.getHanSuDung()}</td>
         </tr>
     </c:forEach>
     </tbody>

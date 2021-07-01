@@ -33,6 +33,8 @@
         <th scope="col">Giá sản phẩm</th>
         <th scope="col">Mô tả sản phẩm</th>
         <th scope="col">Nhà sản xuất</th>
+        <th scope="col">Ngày sản xuất</th>
+        <th scope="col">Hạn sử dụng</th>
         <th scope="col">Sửa</th>
         <th scope="col">Xóa</th>
     </tr>
@@ -45,8 +47,10 @@
             <td>${products.giaSanPham}</td>
             <td>${products.moTaSanPham}</td>
             <td>${products.nhaSanXuat}</td>
-            <td><a  class="btn btn-primary" href="/products?action=edit&id=${products.id}" role="button">Edit</a></td>
-            <td><a onclick="ondelete('${products.id}','${products.tenSanPham}')" class="btn btn-primary"
+            <td>${products.ngaySanXuat}</td>
+            <td>${products.hanSuDung}</td>
+            <td><a  class="btn btn-success" href="/products?action=edit&id=${products.id}" role="button">Edit</a></td>
+            <td><a onclick="ondelete('${products.id}','${products.tenSanPham}')" class="btn btn-danger"
                    role="button" data-toggle="modal" data-target="#modelId">Delete</a></td>
         </tr>
     </c:forEach>

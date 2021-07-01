@@ -12,4 +12,6 @@ public interface ProductService {
     void update(int id, Product product);
     void remove(int id);
     List<Product> findByName(String name);
+    int findByIdToSave();
+    void saveTime(int id,Product product);
 }

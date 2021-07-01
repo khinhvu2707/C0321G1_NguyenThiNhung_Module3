@@ -52,11 +52,15 @@ public class ProductServlet extends HttpServlet {
         int gia = Integer.parseInt(request.getParameter("gia"));
         String moTa = request.getParameter("moTa");
         String nhaSX = request.getParameter("nhaSX");
+        String nsx = request.getParameter("nsx");
+        String hsd = request.getParameter("hsd");
         Product product = productService.findById(id);
         product.setTenSanPham(ten);
         product.setGiaSanPham(gia);
         product.setMoTaSanPham(moTa);
         product.setNhaSanXuat(nhaSX);
+        product.setNgaySanXuat(nsx);
+        product.setHanSuDung(hsd);
         productService.update(id, product);
         showList(request, response);
     }
@@ -66,8 +70,12 @@ public class ProductServlet extends HttpServlet {
         int gia = Integer.parseInt(request.getParameter("gia"));
         String mTSP = request.getParameter("mtsp");
         String hSX = request.getParameter("hsx");
-        Product product = new Product(ten, gia, mTSP, hSX);
+        String nsx = request.getParameter("nsx");
+        String hsd = request.getParameter("hsd");
+        Product product = new Product(ten, gia, mTSP, hSX,nsx,hsd);
         productService.save(product);
+        int id = productService.findByIdToSave();
+        productService.saveTime(id,product);
         showList(request, response);
     }
 
