@@ -1,7 +1,9 @@
 
-//Chưa làm được
 
 public class Equation {
+    public static void main(String[] args) {
+        
+    }
     public static void giaiPTBac2(float a, float b, float c) {
         if (a == 0) {
             if (b == 0) {

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="giaiPhuongTrinhBac2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../giaiPhuongTrinhBac2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
