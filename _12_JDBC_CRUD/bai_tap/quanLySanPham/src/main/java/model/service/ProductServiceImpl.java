@@ -19,6 +19,10 @@ public class ProductServiceImpl implements ProductService {
     public void save(Product product) {
         reponsitory.save(product);
     }
+    @Override
+    public void save2(Product product) {
+        reponsitory.save2(product);
+    }
 
     @Override
     public Product findById(int id) {

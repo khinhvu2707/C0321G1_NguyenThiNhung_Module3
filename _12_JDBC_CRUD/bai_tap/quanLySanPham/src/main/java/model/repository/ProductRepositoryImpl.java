@@ -2,13 +2,21 @@ package model.repository;
 
 import model.bean.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 
 public class ProductRepositoryImpl implements ProductReponsitory {
+    public static final String INSERT_TABLE1_SQL = "insert into product(ten_san_pham,gia_san_pham,mo_ta_san_pham,hang_san_xuat) value (?,?,?,?); ";
+    public static final String FIND_SQL = "select product.* , time.nsx , time.hsd from product join time where product.id=time.id;";
+    public static final String INSERT_TABLE2_SQL = "insert into time(id,nsx,hsd) value (?,?,?); ";
+    public static final String FIND_ID_SQL = "select product.* , time.nsx , time.hsd from product join time where product.id=time.id and product.id = ?;";
+    public static final String SELECT_ID_SQL = "select id from product where id not in (select id from time);";
+    public static final String UPDATE_TABLE1_SQL = "update product set ten_san_pham=?,gia_san_pham=?,mo_ta_san_pham=?,hang_san_xuat=? where id =?; ";
+    public static final String UPDATE_TABLE2_SQL = "update time set nsx=?,hsd=? where id =?; ";
+    public static final String DELETE_TABLE1_SQL = "delete from product where id =?; ";
+    public static final String DELETE_TABLE2_SQL = "delete from time where id =?; ";
+    public static final String FIND_NAME_SQL = "select product.* , time.nsx , time.hsd from product join time where product.id=time.id and ten_san_pham = ?;";
+
     public ProductRepositoryImpl() {
     }
 
@@ -20,7 +28,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         ResultSet resultSet = null;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("select product.* , time.nsx , time.hsd from product join time where product.id=time.id;");
+                statement = connection.prepareStatement(FIND_SQL);
                 resultSet = statement.executeQuery();
                 Product product = null;
                 while (resultSet.next()) {
@@ -40,6 +48,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
                 try {
                     resultSet.close();
                     statement.close();
+
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -55,20 +64,57 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         PreparedStatement statement = null;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("insert into product(ten_san_pham,gia_san_pham,mo_ta_san_pham,hang_san_xuat) value (?,?,?,?); ");
+                statement = connection.prepareStatement(INSERT_TABLE1_SQL);
                 statement.setString(1, product.getTenSanPham());
                 statement.setInt(2, product.getGiaSanPham());
                 statement.setString(3, product.getMoTaSanPham());
                 statement.setString(4, product.getNhaSanXuat());
                 statement.executeUpdate();
-
-//                statement = connection.prepareStatement("insert into time(id,nsx,hsd) value (?,?,?); ");
-//                statement.setInt(1, product.getId());
-//                statement.setString(2, product.getNgaySanXuat());
-//                statement.setString(3, product.getHanSuDung());
-//                statement.executeUpdate();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
+            } finally {
+                try {
+                    statement.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+    }
+
+    @Override
+    public void save2(Product product) {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        if (connection != null) {
+            try {
+                connection.setAutoCommit(false);
+                statement = connection.prepareStatement(INSERT_TABLE1_SQL, Statement.RETURN_GENERATED_KEYS);
+                statement.setString(1, product.getTenSanPham());
+                statement.setInt(2, product.getGiaSanPham());
+                statement.setString(3, product.getMoTaSanPham());
+                statement.setString(4, product.getNhaSanXuat());
+                statement.executeUpdate();
+                resultSet = statement.getGeneratedKeys();
+                int userId = 0;
+                if (resultSet.next())
+                    userId = resultSet.getInt(1);
+
+                statement = connection.prepareStatement(INSERT_TABLE2_SQL);
+                statement.setInt(1, userId);
+                statement.setString(2, product.getNgaySanXuat());
+                statement.setString(3, product.getHanSuDung());
+                statement.executeUpdate();
+                connection.commit();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+                try {
+                    connection.rollback();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             } finally {
                 try {
                     statement.close();
@@ -85,7 +131,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         PreparedStatement statement = null;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("insert into time(id,nsx,hsd) value (?,?,?); ");
+                statement = connection.prepareStatement(INSERT_TABLE2_SQL);
                 statement.setInt(1, id);
                 statement.setString(2, product.getNgaySanXuat());
                 statement.setString(3, product.getHanSuDung());
@@ -112,7 +158,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         ResultSet resultSet = null;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("select product.* , time.nsx , time.hsd from product join time where product.id=time.id and product.id = ?;");
+                statement = connection.prepareStatement(FIND_ID_SQL);
                 statement.setString(1, String.valueOf(findId));
                 resultSet = statement.executeQuery();
                 while (resultSet.next()) {
@@ -147,7 +193,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         int id = 0;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("select id from product where id not in (select id from time);");
+                statement = connection.prepareStatement(SELECT_ID_SQL);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()) {
                     id = resultSet.getInt("id");
@@ -173,14 +219,14 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         PreparedStatement statement = null;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("update product set ten_san_pham=?,gia_san_pham=?,mo_ta_san_pham=?,hang_san_xuat=? where id =?; ");
+                statement = connection.prepareStatement(UPDATE_TABLE1_SQL);
                 statement.setString(1, product.getTenSanPham());
                 statement.setInt(2, product.getGiaSanPham());
                 statement.setString(3, product.getMoTaSanPham());
                 statement.setString(4, product.getNhaSanXuat());
                 statement.setInt(5, id);
                 statement.executeUpdate();
-                statement = connection.prepareStatement("update time set nsx=?,hsd=? where id =?; ");
+                statement = connection.prepareStatement(UPDATE_TABLE2_SQL);
                 statement.setString(1, product.getNgaySanXuat());
                 statement.setString(2, product.getHanSuDung());
                 statement.setInt(3, id);
@@ -205,10 +251,10 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         PreparedStatement statement = null;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("delete from product where id =?; ");
+                statement = connection.prepareStatement(DELETE_TABLE1_SQL);
                 statement.setInt(1, id);
 
-                statement = connection.prepareStatement("delete from time where id =?; ");
+                statement = connection.prepareStatement(DELETE_TABLE2_SQL);
                 statement.setInt(1, id);
 
                 statement.executeUpdate();
@@ -234,7 +280,7 @@ public class ProductRepositoryImpl implements ProductReponsitory {
         ResultSet resultSet = null;
         if (connection != null) {
             try {
-                statement = connection.prepareStatement("select product.* , time.nsx , time.hsd from product join time where product.id=time.id and ten_san_pham = ?;");
+                statement = connection.prepareStatement(FIND_NAME_SQL);
                 statement.setString(1, name);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()) {

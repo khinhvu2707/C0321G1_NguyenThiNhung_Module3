@@ -72,10 +72,14 @@ public class ProductServlet extends HttpServlet {
         String hSX = request.getParameter("hsx");
         String nsx = request.getParameter("nsx");
         String hsd = request.getParameter("hsd");
-        Product product = new Product(ten, gia, mTSP, hSX,nsx,hsd);
-        productService.save(product);
-        int id = productService.findByIdToSave();
-        productService.saveTime(id,product);
+        Product product = new Product(ten, gia, mTSP, hSX, nsx, hsd);
+        // Cách 1 :
+//        productService.save(product);
+//        int id = productService.findByIdToSave();
+//        productService.saveTime(id,product);
+//        showList(request, response);
+        // Cách 2 :
+        productService.save2(product);
         showList(request, response);
     }
 
