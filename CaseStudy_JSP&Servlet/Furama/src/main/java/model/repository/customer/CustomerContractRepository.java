@@ -18,15 +18,6 @@ public class CustomerContractRepository {
             "left join contract_detail cd on  co.contract_id = cd.contract_id\n" +
             "left join attach_service a on cd.attach_service_id = a.attach_service_id;";
 
-//    private static final String SELECT_CONTRACT_USING_BY_CUSTOMER2 = "use furama_jsp;\n" +
-//            "select h.contract_id,if(c.quantity is null ,d.service_cost,d.service_cost+sum(c.quantity*dk.attach_service_cost)) as tong_tien\n" +
-//            "from customer k\n" +
-//            " join contract h on k.customer_id= h.customer_id\n" +
-//            "left join service d on h.service_id = d.service_id\n" +
-//            "left join contract_detail c on h.contract_id = c.contract_id\n" +
-//            "left join attach_service dk on c.attach_service_id = dk.attach_service_id\n" +
-//            "group by h.contract_id,k.customer_id;\n";
-
     private static final String SELECT_CONTRACT_USING_BY_CUSTOMER2 =
             "select h.contract_id,d.service_cost+sum(c.quantity*dk.attach_service_cost) as tong_tien\n" +
             "from customer k\n" +
@@ -214,57 +205,5 @@ public class CustomerContractRepository {
         }
         return contracts;
     }
-
-
-
-//    public List<Contract> findCustomerContract2() {
-//        List<Contract> contracts = new ArrayList<>();
-//        int temp = 0;
-//        int temp1 = 0;
-////
-//        String attachserviceListId ="";
-//        String attachserviceListName ="";
-//        String attachserviceTotalMoney ="";
-//        Set<Integer> setTemp = new HashSet<>();
-//        Connection connection = DBConnection.getConnection();
-//        PreparedStatement statement = null;
-//        ResultSet rs = null;
-//        if (connection != null) {
-//            try {
-//                statement = connection.prepareStatement(SELECT_CONTRACT_USING_BY_CUSTOMER);
-//                rs = statement.executeQuery();
-//                while (rs.next()) {
-//                    int contractId = rs.getInt("contract_id");
-//                    temp = contractId;
-//
-//                    if (setTemp.add(temp)) {
-//                        AttachService attachServiceId = attachServiceRepository.findById(rs.getInt("attach_service_id"));
-//                        attachserviceListId = String.valueOf(rs.getInt("attach_service_id"));
-//                        attachserviceListName = rs.getString("attach_service_name");
-//                        Employee employee = employeeRepository.findById(rs.getInt("employee_id"));
-//                        Customer customer = customerRepository.findById(rs.getInt("customer_id"));
-//                        Service service = serviceRepository.findById(rs.getInt("service_id"));
-//                        contracts.add(new Contract(contractId, employee, customer, service,attachServiceId,attachserviceListId,attachserviceListName));
-//                        temp1++;
-//                    } else {
-//                        attachserviceListId = String.valueOf(rs.getInt("attach_service_id"));
-//                        attachserviceListName = rs.getString("attach_service_name");
-//                        contracts.get(temp1-1).setAttachServiceListId(contracts.get(temp1-1).getAttachServiceListId()+","+attachserviceListId);
-//                        contracts.get(temp1-1).setAttachServiceListName(contracts.get(temp1-1).getAttachServiceListName()+","+attachserviceListName);
-//                    }
-//                }
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            } finally {
-//                try {
-//                    rs.close();
-//                    statement.close();
-//                } catch (SQLException throwables) {
-//                    throwables.printStackTrace();
-//                }
-//                DBConnection.close();
-//            }
-//        }
-//        return contracts;
-//    }
+    
 }

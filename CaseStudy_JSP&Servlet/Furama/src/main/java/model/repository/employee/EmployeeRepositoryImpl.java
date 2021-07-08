@@ -11,6 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository{
+
+    public static final String SELECT_FROM_EMPLOYEE = "SELECT * FROM employee;";
+    public static final String INSERT_INTO_EMPLOYEE = "insert into employee(employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,employee_address,position_id,education_degree_id,division_id,username) value (?,?,?,?,?,?,?,?,?,?,?)";
+    public static final String FIND_BY_ID = "select * from   employee where employee_id = ?;";
+    public static final String UPDATE_EMPLOYEE = "update employee set employee_name=?,employee_birthday=?,employee_id_card=?,employee_salary=?,employee_phone=?,employee_email=?,employee_address=?,position_id=?,education_degree_id=?,division_id=?,username=? where employee_id =?; ";
+    public static final String FIND_BY_NAME = "select * from employee where employee_name=?;";
+    public static final String DELETE = "delete from employee where employee_id =?; ";
+
     public EmployeeRepositoryImpl(){
         
     }
@@ -22,7 +30,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         ResultSet resultSet = null;
         if(connection != null){
             try {
-                statement = connection.prepareStatement("SELECT * FROM employee;");
+                statement = connection.prepareStatement(SELECT_FROM_EMPLOYEE);
                 resultSet = statement.executeQuery();
                 Employee employee = null;
                 while (resultSet.next()){
@@ -61,7 +69,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("insert into employee(employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,employee_address,position_id,education_degree_id,division_id,username) value (?,?,?,?,?,?,?,?,?,?,?)");
+            try{ statement = connection.prepareStatement(INSERT_INTO_EMPLOYEE);
                 statement.setString(1,employee.getEmployeeName());
                 statement.setString(2,employee.getEmployeeBirthday());
                 statement.setString(3,employee.getEmployeeIdCard());
@@ -94,7 +102,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from   employee where employee_id = ?;");
+            try{ statement = connection.prepareStatement(FIND_BY_ID);
                 statement.setInt(1,findId);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){
@@ -133,7 +141,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("update employee set employee_name=?,employee_birthday=?,employee_id_card=?,employee_salary=?,employee_phone=?,employee_email=?,employee_address=?,position_id=?,education_degree_id=?,division_id=?,username=? where employee_id =?; ");
+            try{ statement = connection.prepareStatement(UPDATE_EMPLOYEE);
                 statement.setString(1,employee.getEmployeeName());
                 statement.setString(2,employee.getEmployeeBirthday());
                 statement.setString(3,employee.getEmployeeIdCard());
@@ -165,7 +173,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("delete from employee where employee_id =?; ");
+            try{ statement = connection.prepareStatement(DELETE);
                 statement.setInt(1,id);
                 statement.executeUpdate();
             } catch (SQLException throwables){
@@ -190,7 +198,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from employee where employee_name=?;");
+            try{ statement = connection.prepareStatement(FIND_BY_NAME);
                 statement.setString(1,findName);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){

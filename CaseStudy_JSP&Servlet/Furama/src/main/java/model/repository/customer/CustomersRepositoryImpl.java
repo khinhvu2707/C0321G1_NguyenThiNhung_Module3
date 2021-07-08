@@ -11,6 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomersRepositoryImpl implements CustomersRepository{
+
+    public static final String FIND_BY_NAME = "select * from customer where customer_name=?;";
+    public static final String DELETE = "delete from customer where customer_id =?; ";
+    public static final String UPDATE = "update customer set customer_code=?,customer_type_id=?,customer_name=?,customer_birthday=?,customer_gender=?,customer_id_card=?,customer_phone=?,customer_email=?,customer_address=? where customer_id =?; ";
+    public static final String FIND_BY_ID = "select * from   customer where customer_id = ?;";
+    public static final String SAVE = "insert into customer(customer_code,customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address ) value (?,?,?,?,?,?,?,?,?); ";
+    public static final String FIND_ALL = "SELECT * FROM customer;";
+
     public CustomersRepositoryImpl() {
     }
     @Override
@@ -21,7 +29,7 @@ public class CustomersRepositoryImpl implements CustomersRepository{
         ResultSet resultSet = null;
         if(connection != null){
             try {
-                statement = connection.prepareStatement("SELECT * FROM customer;");
+                statement = connection.prepareStatement(FIND_ALL);
                 resultSet = statement.executeQuery();
                 Customer customer = null;
                 while (resultSet.next()){
@@ -58,7 +66,7 @@ public class CustomersRepositoryImpl implements CustomersRepository{
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("insert into customer(customer_code,customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address ) value (?,?,?,?,?,?,?,?,?); ");
+            try{ statement = connection.prepareStatement(SAVE);
                 statement.setString(1,customer.getCustomerCode());
                 statement.setInt(2,customer.getCustomerTypeId());
                 statement.setString(3,customer.getCustomerName());
@@ -89,7 +97,7 @@ public class CustomersRepositoryImpl implements CustomersRepository{
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from   customer where customer_id = ?;");
+            try{ statement = connection.prepareStatement(FIND_BY_ID);
                 statement.setInt(1,findId);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){
@@ -125,7 +133,7 @@ public class CustomersRepositoryImpl implements CustomersRepository{
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("update customer set customer_code=?,customer_type_id=?,customer_name=?,customer_birthday=?,customer_gender=?,customer_id_card=?,customer_phone=?,customer_email=?,customer_address=? where customer_id =?; ");
+            try{ statement = connection.prepareStatement(UPDATE);
                 statement.setString(1,customer.getCustomerCode());
                 statement.setInt(2,customer.getCustomerTypeId());
                 statement.setString(3,customer.getCustomerName());
@@ -155,7 +163,7 @@ public class CustomersRepositoryImpl implements CustomersRepository{
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("delete from customer where customer_id =?; ");
+            try{ statement = connection.prepareStatement(DELETE);
                 statement.setInt(1,id);
                 statement.executeUpdate();
             } catch (SQLException throwables){
@@ -179,7 +187,7 @@ public class CustomersRepositoryImpl implements CustomersRepository{
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from customer where customer_name=?;");
+            try{ statement = connection.prepareStatement(FIND_BY_NAME);
                 statement.setString(1,findName);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){

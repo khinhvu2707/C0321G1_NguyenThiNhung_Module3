@@ -11,6 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContractRepositoryImpl implements ContractRepository {
+
+    public static final String FIND_ALL = "SELECT * FROM contract;";
+    public static final String SAVE = "insert into contract(contract_start_date,contract_end_date,contract_deposit,contract_total_money,employee_id,customer_id,service_id ) value (?,?,?,?,?,?,?); ";
+    public static final String UPDATE = "update contract set contract_start_date=?,contract_end_date=?,contract_deposit=?,contract_total_money=?,employee_id=?,customer_id=?,service_id=? where contract_id =?; ";
+    public static final String DELETE = "delete from contract where contract_id=?; ";
+    public static final String FIND_BY_ID = "select * from contract where contract_id=?;";
+
     public ContractRepositoryImpl() {
     }
     @Override
@@ -21,7 +28,7 @@ public class ContractRepositoryImpl implements ContractRepository {
         ResultSet resultSet = null;
         if(connection != null){
             try {
-                statement = connection.prepareStatement("SELECT * FROM contract;");
+                statement = connection.prepareStatement(FIND_ALL);
                 resultSet = statement.executeQuery();
                 Contract contract = null;
                 while (resultSet.next()){
@@ -56,7 +63,7 @@ public class ContractRepositoryImpl implements ContractRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("insert into contract(contract_start_date,contract_end_date,contract_deposit,contract_total_money,employee_id,customer_id,service_id ) value (?,?,?,?,?,?,?); ");
+            try{ statement = connection.prepareStatement(SAVE);
                 statement.setString(1,contract.getContractStartDate());
                 statement.setString(2,contract.getContractEndDate());
                 statement.setDouble(3,contract.getContractDeposit());
@@ -85,7 +92,7 @@ public class ContractRepositoryImpl implements ContractRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("update contract set contract_start_date=?,contract_end_date=?,contract_deposit=?,contract_total_money=?,employee_id=?,customer_id=?,service_id=? where contract_id =?; ");
+            try{ statement = connection.prepareStatement(UPDATE);
                 statement.setString(1,contract.getContractStartDate());
                 statement.setString(2,contract.getContractEndDate());
                 statement.setDouble(3,contract.getContractDeposit());
@@ -113,7 +120,7 @@ public class ContractRepositoryImpl implements ContractRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("delete from contract where contract_id=?; ");
+            try{ statement = connection.prepareStatement(DELETE);
                 statement.setInt(1,id);
                 statement.executeUpdate();
             } catch (SQLException throwables){
@@ -136,7 +143,7 @@ public class ContractRepositoryImpl implements ContractRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from contract where contract_id=?;");
+            try{ statement = connection.prepareStatement(FIND_BY_ID);
                 statement.setInt(1,findId);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){

@@ -11,6 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceRepositoryImpl implements ServiceRepository {
+
+    public static final String FIND_BY_NAME = "select * from service where service_name=?;";
+    public static final String DELETE = "delete from service where service_id =?; ";
+    public static final String UPDATE = "update service set service_code=?,service_name=?,service_area=?,service_cost=?,service_max_people=?,rent_type_id=?,service_type_id=?,standard_room=?,description_other_convenience=?,pool_area=?,number_of_floor=? where service_id =?; ";
+    public static final String FIND_BY_ID = "select * from   service where service_id = ?;";
+    public static final String INSERT = "insert into service(service_code,service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standard_room,description_other_convenience ,pool_area,number_of_floor ) value (?,?,?,?,?,?,?,?,?,?,?); ";
+    public static final String FIND_ALL = "SELECT * FROM service;";
+
     public ServiceRepositoryImpl(){
 
     }
@@ -22,7 +30,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         ResultSet resultSet = null;
         if(connection != null){
             try {
-                statement = connection.prepareStatement("SELECT * FROM service;");
+                statement = connection.prepareStatement(FIND_ALL);
                 resultSet = statement.executeQuery();
                 Service service = null;
                 while (resultSet.next()){
@@ -61,7 +69,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("insert into service(service_code,service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standard_room,description_other_convenience ,pool_area,number_of_floor ) value (?,?,?,?,?,?,?,?,?,?,?); ");
+            try{ statement = connection.prepareStatement(INSERT);
                 statement.setString(1,service.getServiceCode());
                 statement.setString(2,service.getServiceName());
                 statement.setInt(3,service.getServiceArea());
@@ -94,7 +102,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from   service where service_id = ?;");
+            try{ statement = connection.prepareStatement(FIND_BY_ID);
                 statement.setInt(1,findId);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){
@@ -133,7 +141,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("update service set service_code=?,service_name=?,service_area=?,service_cost=?,service_max_people=?,rent_type_id=?,service_type_id=?,standard_room=?,description_other_convenience=?,pool_area=?,number_of_floor=? where service_id =?; ");
+            try{ statement = connection.prepareStatement(UPDATE);
                 statement.setString(1,service.getServiceCode());
                 statement.setString(2,service.getServiceName());
                 statement.setInt(3,service.getServiceArea());
@@ -165,7 +173,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("delete from service where service_id =?; ");
+            try{ statement = connection.prepareStatement(DELETE);
                 statement.setInt(1,id);
                 statement.executeUpdate();
             } catch (SQLException throwables){
@@ -190,7 +198,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from service where service_name=?;");
+            try{ statement = connection.prepareStatement(FIND_BY_NAME);
                 statement.setString(1,findName);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){

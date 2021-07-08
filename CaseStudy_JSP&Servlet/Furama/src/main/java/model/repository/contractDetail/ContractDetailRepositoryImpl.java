@@ -11,6 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContractDetailRepositoryImpl implements ContractDetailRepository {
+
+    public static final String FIND_ALL = "SELECT * FROM contract_detail;";
+    public static final String SAVE = "insert into contract_detail(contract_id,attach_service_id,quantity) value (?,?,?); ";
+    public static final String UPDATE = "update contract_detail set contract_id=?,attach_service_id=?,quantity=? where contract_detail_id =?; ";
+    public static final String DELETE = "delete from contract_detail where contract_detail_id=?; ";
+    public static final String FIND_BY_ID = "select * from contract_detail where contract_detail_id=?;";
+
     public ContractDetailRepositoryImpl(){
 
     }
@@ -22,7 +29,7 @@ public class ContractDetailRepositoryImpl implements ContractDetailRepository {
         ResultSet resultSet = null;
         if(connection != null){
             try {
-                statement = connection.prepareStatement("SELECT * FROM contract_detail;");
+                statement = connection.prepareStatement(FIND_ALL);
                 resultSet = statement.executeQuery();
                 ContractDetail contract = null;
                 while (resultSet.next()){
@@ -53,7 +60,7 @@ public class ContractDetailRepositoryImpl implements ContractDetailRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("insert into contract_detail(contract_id,attach_service_id,quantity) value (?,?,?); ");
+            try{ statement = connection.prepareStatement(SAVE);
                 statement.setInt(1,contractDetail.getContractId());
                 statement.setInt(2,contractDetail.getAttachServiceId());
                 statement.setInt(3,contractDetail.getQuantity());
@@ -78,7 +85,7 @@ public class ContractDetailRepositoryImpl implements ContractDetailRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("update contract_detail set contract_id=?,attach_service_id=?,quantity=? where contract_detail_id =?; ");
+            try{ statement = connection.prepareStatement(UPDATE);
                 statement.setInt(1,contractDetail.getContractId());
                 statement.setInt(2,contractDetail.getAttachServiceId());
                 statement.setInt(3,contractDetail.getQuantity());
@@ -102,7 +109,7 @@ public class ContractDetailRepositoryImpl implements ContractDetailRepository {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("delete from contract_detail where contract_detail_id=?; ");
+            try{ statement = connection.prepareStatement(DELETE);
                 statement.setInt(1,id);
                 statement.executeUpdate();
             } catch (SQLException throwables){
@@ -125,7 +132,7 @@ public class ContractDetailRepositoryImpl implements ContractDetailRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         if (connection != null) {
-            try{ statement = connection.prepareStatement("select * from contract_detail where contract_detail_id=?;");
+            try{ statement = connection.prepareStatement(FIND_BY_ID);
                 statement.setInt(1,findId);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()){
