@@ -42,7 +42,7 @@
 <%--                <div style="width: 100%">--%>
             <table class="table" id="tableEmployee" style="overflow-x:scroll; max-width: 100%; display: inline-block">
                 <thead>
-                <tr>
+                <tr class="table-success">
                     <th scope="col">Employee Id</th>
                     <th scope="col">Employee Name</th>
                     <th scope="col">Employee Birthday</th>

@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                         <td> Employee Birthday:</td>
-                        <td><input type="text" class="form-control" id="employeeBirthday"
+                        <td><input type="date" class="form-control" id="employeeBirthday"
                                    aria-describedby="employeeBirthday" name="employeeBirthday"
                                    value="${employee.employeeBirthday}">
                             <c:if test="${messBirthday != null}">

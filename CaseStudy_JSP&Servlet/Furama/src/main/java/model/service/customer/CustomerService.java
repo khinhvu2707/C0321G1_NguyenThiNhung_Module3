@@ -9,7 +9,7 @@ public interface CustomerService {
     List<Customer> findAll();
     Map<String, String> save(Customer customer);
     Customer findById(int id);
-    void update(int id, Customer customer);
+    Map<String, String> update(int id, Customer customer);
     void remove(int id);
     List<Customer> findByName(String name);
 }

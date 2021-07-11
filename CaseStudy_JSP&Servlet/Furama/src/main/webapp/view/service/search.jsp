@@ -32,7 +32,7 @@
             <%--search--%>
             <table class="table" style="overflow-x:scroll; max-width: 100%; display: inline-block">
                 <thead>
-                <tr>
+                <tr class="table-primary">
                     <th scope="col">Service Id</th>
                     <th scope="col">Service Code</th>
                     <th scope="col">Service Name</th>

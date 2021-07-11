@@ -44,7 +44,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void editEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int employeeId = Integer.parseInt(request.getParameter("employeeId"));
+        int employeeId = Integer.parseInt(request.getParameter("id"));
         String employeeName= request.getParameter("employeeName");
         String employeeBirthday = request.getParameter("employeeBirthday");
         String employeeIdCard = request.getParameter("employeeIdCard");
@@ -57,8 +57,19 @@ public class EmployeeServlet extends HttpServlet {
         int divisionId = Integer.parseInt(request.getParameter("divisionId"));
         String username = request.getParameter("username");
         Employee employee = new Employee(employeeId,employeeName,employeeBirthday,employeeIdCard,employeeSalary,employeePhone,employeeEmail,employeeAddress,positionId,educationDegreeId,divisionId,username);
-        employeeService.update(employeeId, employee);
-        showList(request, response);
+        Map<String, String> mapMessage =  employeeService.update(employeeId, employee);
+        if (mapMessage.isEmpty()){
+            showList(request, response);
+        }else {
+            request.setAttribute("messName", mapMessage.get("name"));
+            request.setAttribute("messBirthday", mapMessage.get("birthday"));
+            request.setAttribute("messIdCard", mapMessage.get("idCard"));
+            request.setAttribute("messPhone", mapMessage.get("phone"));
+            request.setAttribute("messEmail", mapMessage.get("email"));
+            request.setAttribute("messSalary", mapMessage.get("salary"));
+            request.setAttribute("employees", employee);
+            showEdit(request,response);
+        }
     }
 
     private void createEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -74,7 +85,7 @@ public class EmployeeServlet extends HttpServlet {
         int divisionId = Integer.parseInt(request.getParameter("divisionId"));
         String username = request.getParameter("username");
         Employee employee = new Employee(employeeName,employeeBirthday,employeeIdCard,employeeSalary,employeePhone,employeeEmail,employeeAddress,positionId,educationDegreeId,divisionId,username);
-        Map<String, String> mapMessage =  employeeService.save(employee);;
+        Map<String, String> mapMessage =  employeeService.save(employee);
         if (mapMessage.isEmpty()){
             showList(request, response);
         }else {

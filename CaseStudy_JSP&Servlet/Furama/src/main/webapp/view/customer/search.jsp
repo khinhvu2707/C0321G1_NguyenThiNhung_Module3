@@ -32,7 +32,7 @@
 <%--search--%>
 <table class="table"  style="overflow-x:scroll; max-width: 100%; display: inline-block">
     <thead>
-    <tr>
+    <tr class="table-warning">
         <th scope="col">Customer Id</th>
         <th scope="col">Customer Code</th>
         <th scope="col">Customer Type Id</th>

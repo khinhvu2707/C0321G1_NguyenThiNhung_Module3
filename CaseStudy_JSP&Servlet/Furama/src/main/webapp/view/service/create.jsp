@@ -71,7 +71,7 @@
                     <tr>
                         <td> Rent Type Id :</td>
                         <td>
-                            <select name="rentTypeId" id="rentTypeId" value="${service.rentTypeId}">
+                            <select name="rentTypeId" id="rentTypeId" value="${service.rentTypeId}" class="form-control">
                                 <option value="1" ${service.rentTypeId == 1 ? 'selected': ''}>Year</option>
                                 <option value="2" ${service.rentTypeId == 2 ? 'selected': ''}>Month</option>
                                 <option value="3" ${service.rentTypeId == 3 ? 'selected': ''}>Day</option>
@@ -83,7 +83,7 @@
                     <tr>
                         <td> Service Type Id :</td>
                         <td>
-                            <select name="serviceTypeId" id="serviceTypeId" value="${service.serviceTypeId}">
+                            <select class="form-control" name="serviceTypeId" id="serviceTypeId" value="${service.serviceTypeId}">
                                 <option value="1" ${service.serviceTypeId == 1 ? 'selected': ''}>Villa</option>
                                 <option value="2" ${service.serviceTypeId == 2 ? 'selected': ''}>House</option>
                                 <option value="3" ${service.serviceTypeId == 3 ? 'selected': ''}>Room</option>

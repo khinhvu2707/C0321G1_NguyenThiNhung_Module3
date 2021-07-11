@@ -35,7 +35,7 @@
         <tr>
             <td> Customer Type Id:</td>
             <td>
-                <select name="customerTypeId" id="customerTypeId" value="${customers.customerTypeId}">
+                <select class="form-control" name="customerTypeId" id="customerTypeId" value="${customers.customerTypeId}">
                     <option value="1" ${customers.customerTypeId == 1 ? 'selected': ''}>Diamond</option>
                     <option value="2" ${customers.customerTypeId == 2 ? 'selected': ''}>Platinium</option>
                     <option value="3" ${customers.customerTypeId == 3 ? 'selected': ''}>Gold</option>
@@ -70,7 +70,7 @@
         <tr>
             <td> Customer Gender :</td>
             <td>
-                <select name="customerGender" id="customerGender" value="${customers.customerGender}">
+                <select class="form-control" name="customerGender" id="customerGender" value="${customers.customerGender}">
                     <option value="0" ${customers.customerGender == 0 ? 'selected': ''}>Male</option>
                     <option value="1" ${customers.customerGender == 1 ? 'selected': ''}>FeMale</option>
                 </select>

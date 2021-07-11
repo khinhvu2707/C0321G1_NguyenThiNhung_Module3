@@ -41,7 +41,7 @@
             </nav>
             <table class="table" id="tableContract"  style="overflow-x:scroll; max-width: 100%; display: inline-block">
                 <thead>
-                <tr>
+                <tr class="table-info">
                     <th scope="col">Contract Id</th>
                     <th scope="col">Contract Start Date</th>
                     <th scope="col">Contract End Date</th>

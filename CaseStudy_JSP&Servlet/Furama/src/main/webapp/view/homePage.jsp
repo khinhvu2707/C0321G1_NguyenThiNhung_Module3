@@ -21,6 +21,7 @@
     <div class="col-lg-6"></div>
     <div class="col-lg-3 d-flex justify-content-end">
         <p style="padding-top: 20px">Tình Tuyết</p>
+        <img width="30px" height="30px" src="https://i2.wp.com/dl8.glitter-graphics.net/pub/1252/1252978iual7aoqdc.gif?zoom=2">
     </div>
 </header>
 <%--carouse--%>
@@ -149,7 +150,7 @@
             </div>
             <%-- Hết Mặc định trang chủ--%>
             <table style="border: solid #b1dfbb;margin: 10px;padding: 10px;display: inline-block">
-                <td><a class="navbar-brand ml-5" href="/customerContract?action=show" style="width: 100%">Danh sách
+                <td><a class="navbar-brand ml-5" href="/customerContract?action=show" style="width: 100%"><img width="17px" height="17px" src="https://i1.wp.com/i646.photobucket.com/albums/uu185/vanhoai1111/th_68.gif?zoom=2">      Danh sách
                     khách hàng đang sử dụng dịch vụ</a></td>
             </table>
 
@@ -157,8 +158,10 @@
     </div>
 </div>
 <footer class="bg-light text-center text-dark">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <a class="text-white" href="https://mdbootstrap.com/">Thanks you very much ! Best wish for you !</a>
+    <div class="text-center p-3" style="background-color: lightyellow">
+        <img width="30px" height="30px" src="https://i2.wp.com/dl8.glitter-graphics.net/pub/1252/1252978iual7aoqdc.gif?zoom=2">
+        <a class="text-black-50" href="https://mdbootstrap.com/">Thanks you very much ! Best wish for you !</a>
+        <img width="30px" height="30px" src="https://i2.wp.com/dl8.glitter-graphics.net/pub/1252/1252978iual7aoqdc.gif?zoom=2">
     </div>
 </footer>
 

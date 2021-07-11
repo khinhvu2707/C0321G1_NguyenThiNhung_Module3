@@ -14,6 +14,7 @@
     <div class="col-lg-6"></div>
     <div class="col-lg-3 d-flex justify-content-end">
         <p style="padding-top: 20px">Tình Tuyết</p>
+        <img width="30px" height="30px" src="https://i2.wp.com/dl8.glitter-graphics.net/pub/1252/1252978iual7aoqdc.gif?zoom=2">
     </div>
 </header>
 <%--carouse--%>

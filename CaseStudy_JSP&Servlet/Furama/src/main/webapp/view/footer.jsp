@@ -7,8 +7,10 @@
 --%>
 
 <footer class="bg-light text-center text-dark" >
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <a class="text-white" href="https://mdbootstrap.com/">Thanks you very much ! Best wish for you !</a>
+    <div class="text-center p-3" style="background-color: lightyellow">
+        <img width="30px" height="30px" src="https://i2.wp.com/dl8.glitter-graphics.net/pub/1252/1252978iual7aoqdc.gif?zoom=2">
+        <a class="text-black-50" href="https://mdbootstrap.com/">Thanks you very much ! Best wish for you !</a>
+        <img width="30px" height="30px" src="https://i2.wp.com/dl8.glitter-graphics.net/pub/1252/1252978iual7aoqdc.gif?zoom=2">
     </div>
 </footer>
 

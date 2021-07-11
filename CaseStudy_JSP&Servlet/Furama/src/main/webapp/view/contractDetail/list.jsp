@@ -41,7 +41,7 @@
             </nav>
             <table class="table" id="tableDetail"  style="overflow-x:scroll; max-width: 100%; display: inline-block">
                 <thead>
-                <tr>
+                <tr class="table-secondary">
                     <th scope="col">Contract Detail Id</th>
                     <th scope="col">Contract Id</th>
                     <th scope="col">Attach Service Id</th>

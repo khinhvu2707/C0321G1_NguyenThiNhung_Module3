@@ -78,8 +78,19 @@ public class CustomerServlet extends HttpServlet {
         String email = request.getParameter("customerEmail");
         String address = request.getParameter("customerAddress");
         Customer customer = new Customer(id,code,typeId,name,birthday,gender,idCard,phone,email,address);
-        customerService.update(id, customer);
-        showList(request, response);
+        Map<String, String> mapMessage = customerService.update(id, customer);
+        if (mapMessage.isEmpty()){
+            showList(request, response);
+        }else {
+            request.setAttribute("messCode", mapMessage.get("code"));
+            request.setAttribute("messName", mapMessage.get("name"));
+            request.setAttribute("messBirthday", mapMessage.get("birthday"));
+            request.setAttribute("messIdCard", mapMessage.get("idCard"));
+            request.setAttribute("messPhone", mapMessage.get("phone"));
+            request.setAttribute("messEmail", mapMessage.get("email"));
+            request.setAttribute("customer", customer);
+            showEdit(request,response);
+        }
     }
 
     private void createCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

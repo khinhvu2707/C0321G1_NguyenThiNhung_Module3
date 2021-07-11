@@ -157,7 +157,6 @@ public class CustomerContractRepository {
 //
         String attachserviceListId ="";
         String attachserviceListName ="";
-        String attachserviceTotalMoney ="";
         Set<Integer> setTemp = new HashSet<>();
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
